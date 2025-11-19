@@ -30,9 +30,11 @@ private:
     void pushSytemProperty(std::string extension, std::string structname, std::string property, T value)
     {
         std::cout << "\t" << extension << " -> " << structname << "." << property << " = " << value << std::endl;
-    }    
-public:    
+    }
+public:
     std::vector<XrExtensionProperties> extensions;
     bool extensionSupported(const char* extension);
     void readProperties(XrInstance instance, XrSystemId systemId);
-}
+};
+
+#endif // OPENXRSYSTEMPROPERTIESEXTENSIONS_H
