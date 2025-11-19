@@ -140,3 +140,14 @@ foreach ($sysprop_exts as $extension) {
 
 $res = ob_get_clean();
 file_put_contents('xrsystemproperties.cpp', $res);
+
+if (!file_exists('./templates/OpenXRSystemPropertiesExtensions.cpp.in')) {
+    echo "Template does not exist!\n";
+    return;
+}
+
+$impl_source = file_get_contents('./templates/OpenXRSystemPropertiesExtensions.cpp.in');
+
+$impl_source = str_replace('{{implementation_read_properties}}', $res, $impl_source);
+
+file_put_contents("./OpenXRSystemPropertiesExtensions.cpp", $impl_source);

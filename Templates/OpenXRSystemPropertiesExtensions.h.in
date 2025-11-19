@@ -1,0 +1,38 @@
+/*
+* THIS HEADER IS AUTO-GENERATED, DO NOT CHANGE
+*
+* Copyright (C) by Sascha Willems (www.saschawillems.de)
+*
+* This code is free software, you can redistribute it and/or
+* modify it under the terms of the GNU Lesser General Public
+* License version 3 as published by the Free Software Foundation.
+*
+* Please review the following information to ensure the GNU Lesser
+* General Public License version 3 requirements will be met:
+* http://opensource.org/licenses/lgpl-3.0.html
+*
+* The code is distributed WITHOUT ANY WARRANTY; without even the
+* implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+* PURPOSE.  See the GNU LGPL 3.0 for more details.
+*/
+
+#ifndef OPENXRSYSTEMPROPERTIESEXTENSIONS_H
+#define OPENXRSYSTEMPROPERTIESEXTENSIONS_H
+
+#include <string>
+#include <vector>
+
+#include <openxr/openxr.h>
+
+class OpenXRSystemPropertiesExtensions {
+private:
+    template <typename T>
+    void pushSytemProperty(std::string extension, std::string structname, std::string property, T value)
+    {
+        std::cout << "\t" << extension << " -> " << structname << "." << property << " = " << value << std::endl;
+    }    
+public:    
+    std::vector<XrExtensionProperties> extensions;
+    bool extensionSupported(const char* extension);
+    void readProperties(XrInstance instance, XrSystemId systemId);
+}
